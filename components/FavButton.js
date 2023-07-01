@@ -1,31 +1,26 @@
 'use client'
 
-import { useMediaQuery } from '@uidotdev/usehooks'
-
 import cx from 'clsx'
-import { motion } from 'framer-motion'
+import { motion, useCycle } from 'framer-motion'
 import { useState } from 'react'
 
 export default function FavButton({ initialState = false, onClick }) {
-  const [active, setActive] = useState(initialState)
+  const [active, toggleActive] = useCycle(initialState, !initialState)
   const [hover, setHover] = useState(false)
-  const isDesktop = useMediaQuery('only screen and (min-width : 768px)')
+  const isDesktop = false // useMediaQuery('only screen and (min-width : 768px)')
 
   const handleMouseEnter = () => setHover(true)
   const handleMouseLeave = () => setHover(false)
 
   const handleOnClick = () => {
     onClick && onClick(!active)
-    setActive(!active)
+    toggleActive()
   }
 
   const mainCx = cx(
     'FavButton group',
-
-    // Box
     'inline-flex items-center gap-2',
-
-    // Cursor pointer only desktop
+    // Pointer only on desktop
     'md:cursor-pointer'
   )
 
@@ -33,9 +28,7 @@ export default function FavButton({ initialState = false, onClick }) {
     // Text
     'text-lg',
 
-    {
-      'text-gray-500 md:group-hover:text-yellow-500': !active,
-    },
+    { 'text-gray-500': !active },
     { 'text-yellow-500': active },
 
     'transition-colors duration-300'
