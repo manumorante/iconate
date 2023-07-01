@@ -4,7 +4,7 @@
 
 :root {
   --foreground: #000;
-  --background: #fff;
+  --background: #e5e7eb; /* bg-gray-200 */
   --yellow: #eab308; /* text-yellow-500 */
   --red: #ef4444; /* text-red-500 */
   --gray: #6b7280; /* text-gray-500 */

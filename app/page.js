@@ -3,12 +3,13 @@ import FavButton from '@/components/FavButton'
 
 export default function Home() {
   return (
-    <main className='max-w-2xl mx-6 sm:mx-auto'>
+    <main className='max-w-2xl mx-6 md:mx-auto'>
       <h1 className='my-8 text-4xl'>Iconate</h1>
 
       <div className='space-x-4'>
         <LikeButton />
-        <FavButton />
+        <FavButton initialState={true} />
+        <FavButton initialState={false} />
       </div>
     </main>
   )
