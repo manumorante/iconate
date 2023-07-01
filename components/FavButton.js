@@ -2,15 +2,9 @@
 
 import cx from 'clsx'
 import { motion, useCycle } from 'framer-motion'
-import { useState } from 'react'
 
 export default function FavButton({ initialState = false, onClick }) {
   const [active, toggleActive] = useCycle(initialState, !initialState)
-  const [hover, setHover] = useState(false)
-  const isDesktop = false // useMediaQuery('only screen and (min-width : 768px)')
-
-  const handleMouseEnter = () => setHover(true)
-  const handleMouseLeave = () => setHover(false)
 
   const handleOnClick = () => {
     onClick && onClick(!active)
@@ -51,11 +45,7 @@ export default function FavButton({ initialState = false, onClick }) {
   const inactiveColor = '#6b7280' // text-gray-500
 
   return (
-    <div
-      className={mainCx}
-      onClick={handleOnClick}
-      // Hover only on desktop
-      {...(isDesktop && { onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave })}>
+    <div className={mainCx} onClick={handleOnClick}>
       <div className={iconCx}>
         <motion.svg
           // SVG
@@ -63,7 +53,7 @@ export default function FavButton({ initialState = false, onClick }) {
           className={svgCx}
           initial={false}
           animate={{
-            scale: active ? [null, 2, 1] : hover ? [null, 1.2, 1.1] : [null, 1.2, 1],
+            scale: active ? [null, 2, 1] : [null, 1.2, 1],
             transition: {
               duration: 0.5,
               ease: 'easeInOut',
@@ -85,8 +75,6 @@ export default function FavButton({ initialState = false, onClick }) {
             animate={
               active
                 ? { pathLength: 0, opacity: 0 } //
-                : hover
-                ? { stroke: activeColor }
                 : { stroke: inactiveColor }
             }
             transition={{
@@ -120,13 +108,14 @@ export default function FavButton({ initialState = false, onClick }) {
           //
           className={shineCx}
           initial={false}
-          animate={{
-            scale: active ? [0, 2, 2.2] : 0,
-            opacity: active ? [1, 0.8, 0] : 0,
-            transition: {
-              duration: 0.5,
-              times: [0, 0.4, 1],
-            },
+          animate={
+            active
+              ? { scale: [0, 2, 2.2], opacity: [1, 0.8, 0] } //
+              : { scale: 0, opacity: 0 }
+          }
+          transition={{
+            duration: 0.5,
+            times: [0, 0.4, 1],
           }}
         />
       </div>
