@@ -1,4 +1,5 @@
 import '@/css/globals.css'
+
 import Image from 'next/image'
 
 export const metadata = {
@@ -8,14 +9,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='es'>
+    <html lang="es">
       <body>
         <Image
-          src='/next.svg'
-          className='absolute bottom-6 left-6 w-20 dark:invert '
+          src="/next.svg"
+          className="absolute bottom-6 left-6 w-20 dark:invert "
           width={394}
           height={90}
-          alt='Next logo'
+          alt="Next logo"
           priority
         />
         {children}

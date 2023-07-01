@@ -1,15 +1,21 @@
-import LikeButton from '@/components/LikeButton'
+'use client'
+
 import FavButton from '@/components/FavButton'
+import LikeButton from '@/components/LikeButton'
 
 export default function Home() {
-  return (
-    <main className='max-w-2xl mx-6 md:mx-auto'>
-      <h1 className='my-8 text-4xl'>Iconate</h1>
+  function handleFavClick(isActive) {
+    console.log('FavButton clicked', isActive)
+  }
 
-      <div className='space-x-4'>
+  return (
+    <main className="mx-6 max-w-2xl md:mx-auto">
+      <h1 className="my-8 text-4xl">Iconate</h1>
+
+      <div className="space-x-4">
         <LikeButton />
-        <FavButton initialState={true} />
-        <FavButton initialState={false} />
+        <FavButton onClick={handleFavClick} initialState={true} />
+        <FavButton onClick={handleFavClick} />
       </div>
     </main>
   )
