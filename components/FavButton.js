@@ -56,7 +56,6 @@ export default function FavButton({ initialState = false, onClick }) {
   // Shared values
   const activeColor = '#eab308' // text-yellow-500
   const inactiveColor = '#6b7280' // text-gray-500
-  const ease = 'easeInOut'
 
   return (
     <div
@@ -74,7 +73,7 @@ export default function FavButton({ initialState = false, onClick }) {
             scale: active ? [null, 2, 1] : hover ? [null, 1.2, 1.1] : [null, 1.2, 1],
             transition: {
               duration: 0.5,
-              ease,
+              ease: 'easeInOut',
               times: [0, 0.4, 1],
             },
           }}
