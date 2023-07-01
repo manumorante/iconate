@@ -22,6 +22,6 @@ Or `npm run dev` or `pnpm dev` if you prefer.
 
 **[Heroicons](https://heroicons.com/)**: De aquí cogemos los iconos para tratar de animarlos.
 
-## Deploy on Vercel
+## Deploy
 
 Tendremos una versión de la app en producción en [https://iconate.vercel.app/](https://iconate.vercel.app/)
